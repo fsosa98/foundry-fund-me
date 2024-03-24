@@ -1,17 +1,17 @@
 // // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.18;
+pragma solidity ^0.8.19;
 
 import {Test} from "forge-std/Test.sol";
 import {FundMe} from "../../src/FundMe.sol";
 import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 
 contract FundMeTest is Test {
-    FundMe fundMe;
+    FundMe public fundMe;
 
-    address USER = makeAddr("user");
-    uint256 constant SEND_VALUE = 0.1 ether;
-    uint256 constant STARTING_BALANCE = 10 ether;
+    address public constant USER = address(1);
+    uint256 public constant SEND_VALUE = 0.1 ether;
+    uint256 public constant STARTING_BALANCE = 10 ether;
 
     function setUp() external {
         DeployFundMe deployFundMe = new DeployFundMe();
@@ -86,7 +86,6 @@ contract FundMeTest is Test {
         uint256 startingFundMeBalance = address(fundMe).balance;
 
         // Act
-
         vm.prank(fundMe.getOwner());
         fundMe.withdraw();
 
@@ -109,7 +108,6 @@ contract FundMeTest is Test {
         uint256 startingFundMeBalance = address(fundMe).balance;
 
         // Act
-
         vm.prank(fundMe.getOwner());
         fundMe.cheaperWithdraw();
 
