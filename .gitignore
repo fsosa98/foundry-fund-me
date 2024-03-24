@@ -14,5 +14,5 @@ docs/
 .env
 
 broadcast/
-lib/*
-.github/workflows/*
+lib/
+.github/workflows/
